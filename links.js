@@ -42,7 +42,9 @@ var links_database = [
     ["/2025/games/sliding_blocks.html", "/html/img/Boxes50.png"], //Blokus
     ["/2025/games/daily_mino.html", "/html/img/Boxes51.png"], //Daily Mino puzzle
     ["/2025/games/squong.html", "/html/img/Boxes10.png"], //Squong
-    ["/2025/games/wanted.html", "/html/img/Boxes10.png"], //Squong
+    ["/2025/games/wanted.html", "/html/img/Boxes10.png"], //Wanted
+    ["/2026/superclock.html", "/html/img/Boxes10.png"], //superclock
+    ["/2026/icosahedron.html", "/html/img/Boxes10.png"], //icosahedron
 
     // ["http://squanky.net:3001/", "/html/img/Boxes19.png"], //MorseMate
     // ["/controller/multicanvas.html", "/html/img/Boxes11.png"], //multicanvas racing game
