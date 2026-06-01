@@ -43,11 +43,27 @@
 			let minute = now.getMinutes();
 			let second = now.getSeconds();
 
+			// Decade
+			let decadeStartYear = Math.floor(year / 10) * 10;
+			let decadeStart = new Date(decadeStartYear, 0, 1);
+			let decadeEnd = new Date(decadeStartYear + 10, 0, 1);
+
+			let decadeProgress =
+				(now - decadeStart) / (decadeEnd - decadeStart);
+
+			// Century
+			let centuryStartYear = Math.floor(year / 100) * 100;
+			let centuryStart = new Date(centuryStartYear, 0, 1);
+			let centuryEnd = new Date(centuryStartYear + 100, 0, 1);
+
+			let centuryProgress =
+				(now - centuryStart) / (centuryEnd - centuryStart);
+
 			// console.log(year, month, day, (hour % 12) / 12, minute, second)
 
 			secondProgress = (second / 60)
 			minuteProgress = ((minute + secondProgress) / 60)
-			hourProgress = ((hour % 12 + minuteProgress) / 12)
+			hourProgress = ((hour % 24 + minuteProgress) / 24)
 
 			dayProgress = ((hour + minuteProgress) / 12)
 			weekProgress = ((weekday + dayProgress) / 7)
@@ -59,13 +75,16 @@
 			translate(width / 2, height / 2)
 			strokeWeight(10)
 
-			clockFace(yearProgress, 	10, 6 / 6,	"blue")
-			clockFace(monthProgress, 	10, 5 / 6,	"green")
-			clockFace(weekProgress, 	10, 4 / 6,	"red")
+			clockFace(centuryProgress, 10, 8 / 8, "blue");
+			clockFace(decadeProgress,  10, 7 / 8, "green");
 
-			clockFace(hourProgress, 	10, 3 / 6, 	"yellow")
-			clockFace(minuteProgress, 	10, 2 / 6,	"purple")
-			clockFace(secondProgress, 	10, 1 / 6,	"orange")
+			clockFace(yearProgress, 10, 6 / 8, "red")
+			clockFace(monthProgress, 10, 5 / 8, "yellow")
+			clockFace(weekProgress, 10, 4 / 8, "purple")
+
+			clockFace(hourProgress, 10, 3 / 8, "orange")
+			clockFace(minuteProgress, 10, 2 / 8, "pink")
+			clockFace(secondProgress, 10, 1 / 8, "brown")
 		}
 
 		function windowResized() {
@@ -80,14 +99,14 @@
 
 		function clockFace(angle, hand_length, scaler = 1, color) {
 			push()
-			scale(scaler*0.95)
+			scale(scaler * 0.95)
 
 			noStroke()
 			fill(0)
-			circle(0,0,c_len)
+			circle(0, 0, c_len)
 
 			fill(color)
-			arc(0,0,c_len,c_len,-HALF_PI,angle * TWO_PI - HALF_PI,PIE)
+			arc(0, 0, c_len, c_len, -HALF_PI, angle * TWO_PI - HALF_PI, PIE)
 
 			// outline circle
 			noFill()
