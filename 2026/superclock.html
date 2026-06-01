@@ -66,7 +66,7 @@
 			hourProgress = ((hour % 24 + minuteProgress) / 24)
 
 			dayProgress = ((hour + minuteProgress) / 12)
-			weekProgress = (((weekday + 5) % 7) + dayProgress) / 7
+			weekProgress = (((weekday + 6) % 7) + dayProgress) / 7
 
 			monthProgress = dayOfMonth / new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
 
